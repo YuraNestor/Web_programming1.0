@@ -135,6 +135,13 @@ function img() {
         .pipe(dest("build/"));                  // Переміщуємо у папку build/
 }
 
+function fonts() {
+    return src("app/fonts/**/*.{otf,eot,ttf}", 
+        { base: "app" })                   
+        .pipe(newer("build/"))                  
+        .pipe(dest("build/"));                  
+}
+
 // Очищуємо папку зібраного проекту
 function cleanBuild() {
     return del("build/**/*", { force: true });    // Очищуємо папку перед збиранням проекту
@@ -176,7 +183,7 @@ function deployOnGitHub() {
 // ...............................................................................................
 
 // Збирання проекту
-exports.build = series(cleanBuild, html, css, preprocessCss, js, img);
+exports.build = series(cleanBuild, html, css, preprocessCss, js, img, fonts);
 
 // Завдання за замовчуванням
 exports.default = parallel(series(exports.build, browserSync), watchForFiles);
