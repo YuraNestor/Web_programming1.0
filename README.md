@@ -1,1 +1,3 @@
-[Web_Programming1.0](https://YuraNestor.github.io/Web_programming/)
+
+#[Зразок лабораторних робіт](https://yuranestor.github.io/Web_programming1.0// "Сайт на сторінках GitHub")
+
