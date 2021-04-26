@@ -1,3 +1,3 @@
 
-#[Зразок лабораторних робіт](https://dniprovets.github.io/Web_programming1.0/ "Сайт на сторінках GitHub")
+#[Зразок лабораторних робіт](https://yuranestor.github.io/Web_programming1.0// "Сайт на сторінках GitHub")
 
