@@ -192,7 +192,7 @@ function deployOnGitHub() {
 // ...............................................................................................
 
 // Збирання проекту
-exports.build = series(cleanBuild, html, css, preprocessCss, js, img, fonts);
+exports.build = series(cleanBuild, html, css, preprocessCss, js, txt, img, fonts);
 
 // Завдання за замовчуванням
 exports.default = parallel(series(exports.build, browserSync), watchForFiles);
