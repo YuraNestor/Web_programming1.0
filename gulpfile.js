@@ -147,6 +147,12 @@ function fonts() {
         .pipe(newer("build/"))
         .pipe(dest("build/"));
 }
+function sound() {
+    return src("app/sound/**/*.{mp3,wav}",
+        { base: "app" })
+        .pipe(newer("build/"))
+        .pipe(dest("build/"));
+}
 // Очищуємо папку зібраного проекту
 function cleanBuild() {
     return del("build/**/*", { force: true });    // Очищуємо папку перед збиранням проекту
@@ -192,7 +198,7 @@ function deployOnGitHub() {
 // ...............................................................................................
 
 // Збирання проекту
-exports.build = series(cleanBuild, html, css, preprocessCss, js, txt, img, fonts);
+exports.build = series(cleanBuild, html, css, preprocessCss, js, txt, img, fonts, sound);
 
 // Завдання за замовчуванням
 exports.default = parallel(series(exports.build, browserSync), watchForFiles);

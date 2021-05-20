@@ -40,7 +40,17 @@ function click_on_menu (object) {
       break;
    }
 }
+var audio = new Audio();
 
+function playSound(url) {
+    audio.src = url;
+    audio.play();
+}
+
+function stopSound() {
+    audio.pause();
+    audio.currentTime = 0;
+}
 // Обробка вибору картини
 function click_on_news (object) {
 
@@ -58,11 +68,12 @@ function click_on_news (object) {
       let block =
         `<div class="modal-header border-secondary text-white" class="modalWin">
             <div class="d-flex flex-column ms-3">
+               
                <h2 class="m-0">${item_data[0]}</h2>
                <span>Автор: ${item_data[1]}</span>
                <span>Час публікації: ${item_data[2]}</span>
             </div>
-            <button type="button" class="btn-close bg-dark me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" onclick="stopSound()" class="btn-close bg-dark me-3" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
          
          <div class="modal-body text-white">
@@ -89,8 +100,8 @@ function load_more_news(n) {
         $.get(`../data/text/${news[index]}.txt`, (n=>{
             let a = n.split("\n")
               , t = `<div class="col-md-6 col-lg-3">\n               
-              <div id="div1_news" class="p-2 news" onclick="click_on_news(this)" data="${a[3]}">\n                  
-              <img src="../data/img/${a[3]}.jpg" class="w-100" alt="news">\n                  
+              <div id="div1_news" class="p-2 news" onclick="click_on_news(this), playSound('../sound/${a[3]}.mp3')" data="${a[3]}">\n                  
+              <img src="../data/img/${a[3]}.jpg" class="w-100" alt="news" width="300" height="300">\n                  
               <div class="bg-light text-dark">${a[0]}</div>\n               
               </div>\n            
               </div>`;
