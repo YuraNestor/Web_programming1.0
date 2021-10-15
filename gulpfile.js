@@ -132,8 +132,8 @@ function txt() {
 
 // Обробляємо файли зображень
 function img() {
-    return src(["app/img/**/*.{png,jpg,jpeg,gif}",
-                "app/data/**/*.{png,jpg,jpeg,gif}"], // Беремо файли з розширеннями png, jpg, jpeg, gif
+    return src(["app/img/**/*.{png,jpg,jpeg,gif,svg}",
+                "app/data/**/*.{png,jpg,jpeg,gif,svg}"], // Беремо файли з розширеннями png, jpg, jpeg, gif
                { base: "app" })                      // Задаємо параметр base, щоб зберегти вложеність файлів
           .pipe(newer("build/"))                     // Відфільтровуємо лише змінені файли
           .pipe(image_min({ verbose: log,
@@ -142,7 +142,7 @@ function img() {
 }
 
 function fonts() {
-    return src("app/fonts/**/*.{otf,eot,ttf}",
+    return src("app/fonts/**/*.{otf,eot,ttf,woff}",
         { base: "app" })
         .pipe(newer("build/"))
         .pipe(dest("build/"));
